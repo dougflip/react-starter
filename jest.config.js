@@ -1,0 +1,9 @@
+module.exports = {
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  watchPlugins: [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname",
+  ],
+  setupFilesAfterEnv: ["./jest.setup.ts"],
+};
