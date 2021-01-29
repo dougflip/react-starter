@@ -8,4 +8,4 @@ I've used CRA before and I am sure I will again, but it's also
 nice to put something simpler together and feel like you have full control.
 
 Have a look at [package.json](./package.json) to see the available scripts
-as well as required dependencies. There isn't much,
+as well as required dependencies.
