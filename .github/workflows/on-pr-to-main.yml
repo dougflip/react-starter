@@ -1,0 +1,21 @@
+name: "Actions to run when code is pushed to master"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run_code_quality_and_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Install dependencies"
+        run: npm install
+
+      - name: "Check code formatting"
+        run: npm run format:check
+
+      - name: "Run tests"
+        run: npm run test:ci
