@@ -17,3 +17,34 @@ Some goals:
 - Simple build/bundling
 - Basic CI in place
 - Code quality like formatting, linting, coverage etc.
+
+## Setup
+
+1. [Install nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. `nvm use`
+3. `npm install`
+4. `npx msw init dist` - install the service worker for development
+
+## Starting the development server
+
+```
+npm start
+```
+
+Open [http://localhost:1234/](http://localhost:1234/)
+
+## Running the tests
+
+```
+npm test
+```
+
+Runs the tests in watch mode.
+
+## Build the code
+
+```
+npm run build
+```
+
+Builds the code for distribution

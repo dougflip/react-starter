@@ -1,5 +1,5 @@
 import { fetchExampleApiResponse } from "./api";
-import { jsonApiError } from "./api-mock-server";
+import { jsonGetApiError } from "./api-test-utils";
 
 describe("api", () => {
   describe("fetchExampleApiResponse", () => {
@@ -9,7 +9,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
-      jsonApiError("/hello-world", {
+      jsonGetApiError("/hello-world", {
         status: 500,
         body: { message: "Unknown error" },
       });
