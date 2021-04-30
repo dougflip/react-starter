@@ -3,7 +3,7 @@
  * There should be an entry for each API method here (at least happy path).
  *
  * In the future, we may move the responses themselves out to their own file
- * or even into a cheap in memory database if our mock becomes more featured.
+ * or even into a cheap in memory database if our mock becomes more full featured.
  *
  * See: https://kentcdodds.com/blog/stop-mocking-fetch
  */

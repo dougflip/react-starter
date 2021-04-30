@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import "whatwg-fetch";
-import { server } from "./src/api/api-mock-server";
+import { server } from "./src/mocks/node";
 
 beforeAll(() => server.listen());
 // if you need to add a handler after calling setupServer for some specific test
