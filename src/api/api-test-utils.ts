@@ -15,6 +15,13 @@ interface MockErrorResponse<T> {
   body: T;
 }
 
+function defaultErrorResponse(): MockErrorResponse<string> {
+  return {
+    status: 500,
+    body: "An unknown error occured",
+  };
+}
+
 /**
  * Configures the mock server to return a JSON error.
  * @param verb The HTTP verb - "get" or "post"
@@ -40,9 +47,12 @@ export function jsonApiError<T>(
  */
 export function jsonGetApiError<T>(
   path: string,
-  mockResponse: MockErrorResponse<T>
+  mockResponse: Partial<MockErrorResponse<T>> = {}
 ): void {
-  return jsonApiError("get", path, mockResponse);
+  return jsonApiError("get", path, {
+    ...defaultErrorResponse(),
+    ...mockResponse,
+  });
 }
 
 /**
@@ -52,7 +62,10 @@ export function jsonGetApiError<T>(
  */
 export function jsonPostApiError<T>(
   path: string,
-  mockResponse: MockErrorResponse<T>
+  mockResponse: Partial<MockErrorResponse<T>> = {}
 ): void {
-  return jsonApiError("post", path, mockResponse);
+  return jsonApiError("post", path, {
+    ...defaultErrorResponse(),
+    ...mockResponse,
+  });
 }
