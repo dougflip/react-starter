@@ -1,4 +1,4 @@
-import { API_URL } from "../env";
+import { API_URL } from "~/env";
 
 class ApiResponseError extends Error {
   response: Response;
