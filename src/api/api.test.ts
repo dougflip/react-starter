@@ -1,5 +1,5 @@
+import { jsonGetApiError, jsonPostApiError } from "~/test-utils";
 import { fetchExampleApiResponse, postExampleApiResponse } from "./api";
-import { jsonGetApiError, jsonPostApiError } from "./api-test-utils";
 
 describe("api", () => {
   describe("fetchExampleApiResponse", () => {
@@ -9,12 +9,10 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
-      jsonGetApiError("/hello-world", {
-        status: 500,
-        body: { message: "Unknown error" },
+      jsonGetApiError("/hello-world", { status: 404 });
+      await expect(fetchExampleApiResponse()).rejects.toMatchObject({
+        statusCode: 404,
       });
-
-      await expect(fetchExampleApiResponse()).rejects.toThrow(/500/);
     });
   });
 
@@ -25,10 +23,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
-      jsonPostApiError("/hello-world", {
-        status: 500,
-        body: { message: "Unknown error" },
-      });
+      jsonPostApiError("/hello-world");
 
       await expect(postExampleApiResponse({ name: "testing" })).rejects.toThrow(
         /500/

@@ -2,9 +2,11 @@ import { API_URL } from "~/env";
 
 class ApiResponseError extends Error {
   response: Response;
+  statusCode: number;
 
   constructor(response: Response) {
     super(`API responded with ${response.status}`);
+    this.statusCode = response.status;
     this.response = response;
   }
 }
