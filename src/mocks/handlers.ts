@@ -13,4 +13,7 @@ export const handlers = [
   rest.get("/hello-world", (req, res, ctx) => {
     return res(ctx.json({ message: "Hello World" }));
   }),
+  rest.post("/hello-world", (req, res, ctx) => {
+    return res(ctx.json({ message: "Hello World" }));
+  }),
 ];
