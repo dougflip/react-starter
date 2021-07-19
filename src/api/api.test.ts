@@ -10,9 +10,7 @@ describe("api", () => {
 
     it("throws an exception for an error response", async () => {
       jsonGetApiError("/hello-world", { status: 404 });
-      await expect(fetchExampleApiResponse()).rejects.toMatchObject({
-        statusCode: 404,
-      });
+      await expect(fetchExampleApiResponse()).rejects.toThrow(/404/);
     });
   });
 
