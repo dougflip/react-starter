@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { App } from "./app";
 import "./index.css";
 
 if (process.env.NODE_ENV === "development") {
@@ -10,4 +11,4 @@ if (process.env.NODE_ENV === "development") {
   worker.start();
 }
 
-ReactDOM.render(<div>Hello from React</div>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
