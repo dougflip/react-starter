@@ -48,3 +48,24 @@ npm run build
 ```
 
 Builds the code for distribution
+
+## Docker
+
+You can start up a development environment via Docker also
+
+```
+./scripts/dev
+```
+
+The default command to the above script is `bash` but you can pass other commands if you like
+
+```
+# start the dev server on port 1234
+./scripts/dev npm start
+
+# run the tests in watch mode
+./scripts/dev npm test
+
+# lint the code
+./scripts/dev npm run lint
+```

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+echo "Building a development Docker image"
+docker build -t react-starter .
+
+[[ $# -eq 0 ]] && cmd="bash" || cmd="$@"
+echo "Running ${cmd} in the development container"
+docker run --rm -it \
+    -v $(pwd)/config:/app/config \
+    -v $(pwd)/coverage:/app/coverage \
+    -v $(pwd)/scripts:/app/scripts \
+    -v $(pwd)/src:/app/src \
+    -v $(pwd)/.eslintrc:/app/.eslintrc \
+    -v $(pwd)/.prettierignore:/app/.prettierignore \
+    -v $(pwd)/jest.config.js:/app/jest.config.js \
+    -v $(pwd)/jest.setup.ts:/app/jest.setup.ts \
+    -v $(pwd)/tsconfig.json:/app/tsconfig.json \
+    -p 1234:1234 \
+    react-starter \
+    $cmd
