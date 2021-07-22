@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+# This is an example of how code _could be_ built and deployed.
+# Mostly interested in a reminder to check required env vars before deploying.
+
+: "${API_URL:?Required API_URL env var is not set - exiting.}"
+
+npm install
+
+NODE_ENV=production npm run build
+
+# push built files somewhere
