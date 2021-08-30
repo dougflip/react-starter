@@ -18,6 +18,12 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
+  rules: {
+    // allows you to prefix vars with _ to flag them as unused
+    // works with destructuring as well
+    // const { unused: _, ...rest } = myObj;
+    "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
+  },
   rules: {},
   settings: {
     react: {
