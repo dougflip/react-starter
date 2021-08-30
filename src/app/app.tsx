@@ -4,14 +4,16 @@ import { Home } from "~pages/home";
 
 export function App(): JSX.Element {
   return (
-    <main>
-      <Router>
-        <Switch>
-          <Route>
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </main>
+    <React.StrictMode>
+      <main>
+        <Router>
+          <Switch>
+            <Route>
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </main>
+    </React.StrictMode>
   );
 }
