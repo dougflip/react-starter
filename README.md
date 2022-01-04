@@ -18,12 +18,28 @@ Some goals:
 - Basic CI in place
 - Code quality like formatting, linting, coverage etc.
 
-## Setup
+## Local Development
 
-1. [Install nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-2. `nvm use`
-3. `npm install`
-4. `npx msw init dist` - install the service worker for development
+You can develop locally via Docker.
+
+```bash
+./scripts/dev
+```
+
+This will start a Bash session **inside a container** with development dependencies installed
+and the local source code mounted as a volume.
+
+As an example try running:
+
+```bash
+npm run build
+```
+
+You can edit code on your local machine and re-run the command above (or any other command).
+The intent is to _edit_ code from your local machine
+and _operate_ on the code from within the container (compile etc.).
+
+When you are done you can exit the container with `ctrl + d`.
 
 ## Starting the development server
 
@@ -49,23 +65,11 @@ npm run build
 
 Builds the code for distribution
 
-## Docker
+## Setup
 
-You can start up a development environment via Docker also
+If you prefer to develop "on the metal" I would recommend
+using NVM.
 
-```
-./scripts/dev
-```
-
-The default command to the above script is `bash` but you can pass other commands if you like
-
-```
-# start the dev server on port 1234
-./scripts/dev npm start
-
-# run the tests in watch mode
-./scripts/dev npm test
-
-# lint the code
-./scripts/dev npm run lint
-```
+1. [Install nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. `nvm use`
+3. `npm install`

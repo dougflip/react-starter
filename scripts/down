@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+imageName=react-starter-local-dev
+
+###
+# In this case there isn't really anything to "clean up".
+# Just as an example, this deletes the image.
+# You probably wouldn't want to do this in real project
+# especially if you are developing in it regularly.
+#
+# In other projects though you may run something like
+# - `docker stop <bg container name>` or
+# - `docker-compose down -v` or
+# - `docker network rm <network name>`
+#
+# Basically, clean up any "lingering" artifacts from the dev env.
+###
+echo "Removing development image $imageName"
+docker image rm "$imageName"
