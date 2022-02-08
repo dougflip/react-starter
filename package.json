@@ -4,14 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "npm run compile && parcel build src/index.html",
+    "build": "npm run compile && vite build",
     "compile": "tsc --noEmit",
     "compile:watch": "npm run compile -- --watch",
     "format": "prettier --write src",
     "format:check": "prettier --check src",
     "lint:code": "eslint src --max-warnings 0",
     "lint": "run-p format:check lint:code",
-    "serve": "parcel src/index.html",
+    "serve": "vite --host",
     "start": "run-p compile:watch serve",
     "test": "jest --watchAll",
     "test:ci": "CI=1 jest --ci --coverage"
@@ -19,6 +19,7 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-query": "^3.34.7",
     "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
+    "@vitejs/plugin-react": "^1.1.3",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.22.0",
@@ -39,13 +41,13 @@
     "jest-watch-typeahead": "^1.0.0",
     "msw": "^0.36.3",
     "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
     "ts-jest": "^27.0.3",
     "typescript": "^4.4.2",
+    "vite": "^2.7.10",
     "whatwg-fetch": "^3.6.2"
   },
   "msw": {
-    "workerDirectory": "dist"
+    "workerDirectory": ""
   }
 }

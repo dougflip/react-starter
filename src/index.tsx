@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import { App } from "./app";
 import "./index.css";
 
-if (process.env.NODE_ENV === "development") {
-  // This require statement allows this module to be loaded conditionally.
-  // This means all of the "mock" code is only pulled in for development builds.
-  /* eslint-disable-next-line */
-  const { worker } = require("./mocks/browser");
+// https://github.com/msutkowski/msw-ts-vitejs/blob/main/src/main.tsx
+async function loadAndStartMockServer() {
+  const { worker } = await import("./mocks/browser");
   worker.start();
+}
+
+if (process.env.NODE_ENV === "development") {
+  loadAndStartMockServer();
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
