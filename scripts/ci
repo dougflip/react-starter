@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+CMD="$*"
+
+if [ -z "$CMD" ]; then
+ echo "You must provide a command, for example: ./scripts/ci npm run test:ci"
+fi
+
+echo "Building a development Docker image"
+docker build -t react-starter-ci .
+
+echo "Running ${CMD} in react-starter-ci container"
+docker run --rm \
+    -v /app/node_modules \
+    -v "$(pwd)":/app \
+    react-starter-ci \
+    $CMD
