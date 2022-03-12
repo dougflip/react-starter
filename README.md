@@ -18,6 +18,14 @@ Some goals:
 - Basic CI in place
 - Code quality like formatting, linting, coverage etc.
 
+## Recommended Libraries
+
+- [date-fns](https://github.com/date-fns/date-fns) - Modern JavaScript date utility library
+- [mantine](https://github.com/mantinedev/mantine/) - React components library with native dark theme support
+- [ts-belt](https://github.com/mobily/ts-belt) - Fast, modern, and practical utility library for FP in TypeScript.
+- [vite](https://github.com/vitejs/vite) - Next generation frontend tooling. It's fast!
+- [zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation with static type inference
+
 ## Local Development
 
 You can develop locally via Docker.
