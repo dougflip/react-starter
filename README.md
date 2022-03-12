@@ -65,7 +65,7 @@ npm run build
 
 Builds the code for distribution
 
-## Setup
+## Development without Docker
 
 If you prefer to develop "on the metal" I would recommend
 using NVM.
