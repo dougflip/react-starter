@@ -8,6 +8,7 @@ on:
 jobs:
   run_code_quality_and_tests:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
 

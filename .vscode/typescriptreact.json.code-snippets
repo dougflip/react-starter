@@ -1,0 +1,34 @@
+{
+  "explorer-component": {
+    "prefix": "component",
+    "body": [
+      "import React from \"react\";",
+      "",
+      "type ${1:Component}Props = {}",
+      "",
+      "export function ${1:Component}({}: ${1:Component}Props): JSX.Element {",
+      "    return ${2:<div>Hello World</div>}",
+      "}"
+    ],
+    "description": "A small boilerplate for a component"
+  },
+  "component-test": {
+    "prefix": "explorer-component-test",
+    "body": [
+      "import { render, screen } from \"@testing-library/react\";",
+      "import userEvent from \"@testing-library/user-event\";",
+      "import React from \"react\";",
+      "",
+      "describe(\"${1:filename}\", () => {",
+      "  describe(\"${2:component-name}\", () => {",
+      "    it(\"renders an initial state\", () => {",
+      "      render(<div>my component</div>);",
+      "      userEvent.click(screen.getByText(/my component$/));",
+      "      expect(screen.getByText(/my component$/)).toBeInTheDocument();",
+      "    });",
+      "  });",
+      "});"
+    ],
+    "description": "explorer-component-test"
+  }
+}
