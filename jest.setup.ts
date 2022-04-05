@@ -15,5 +15,5 @@ afterAll(() => server.close());
  * https://github.com/vitejs/vite/issues/1955#issuecomment-1029853795
  */
 jest.mock("~/env", () => {
-  return { env: { apiUrl: "" } };
+  return { env: { apiUrl: "", nodeEnv: "TEST" } };
 });
