@@ -1,5 +1,5 @@
 {
-  "explorer-component": {
+  "component": {
     "prefix": "component",
     "body": [
       "import React from \"react\";",
