@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import { env } from "~/env";
 import { server } from "~/mocks/node";
 
 /**
@@ -68,4 +69,11 @@ export function jsonPostApiError<T>(
     ...defaultErrorResponse(),
     ...mockResponse,
   });
+}
+
+/**
+ * Turns a path into a full URL based on the current API URL.
+ */
+export function apiUrl(path: string): string {
+  return `${env.apiUrl}/${path}`;
 }

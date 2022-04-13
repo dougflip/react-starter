@@ -16,10 +16,10 @@ function devDelay(ctx: RestContext, delay = 1000) {
 }
 
 export const handlers = [
-  rest.get("/hello-world", (req, res, ctx) => {
+  rest.get(`${env.apiUrl}/hello-world`, (req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
   }),
-  rest.post("/hello-world", (req, res, ctx) => {
+  rest.post(`${env.apiUrl}/hello-world`, (req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
   }),
 ];
