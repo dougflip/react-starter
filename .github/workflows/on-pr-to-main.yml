@@ -1,4 +1,4 @@
-name: "Actions to run when code is pushed to master"
+name: "Main: Push"
 
 on:
   pull_request:
@@ -12,8 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: "Run the linter"
-        run: ./scripts/ci npm run lint
-
-      - name: "Run tests"
-        run: ./scripts/ci npm run test:ci
+      - name: "Build and Verify the Code"
+        run: ./scripts/ci ./scripts/build-and-verify-code
