@@ -3,16 +3,21 @@ import "cross-fetch/polyfill";
 import { afterAll, afterEach, beforeAll, vi } from "vitest";
 import { server } from "./src/mocks/node";
 
-// Start server before all tests
+/**
+ * Set up [MSW](https://mswjs.io/) for API mocking during tests.
+ * This includes:
+ *  - Starting the server before all tests
+ *  - Stopping the server after all tests complete
+ *  - Resetting handlers between each test
+ */
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
-
-//  Close server after all tests
 afterAll(() => server.close());
-
-// Reset handlers after each test `important for test isolation`
 afterEach(() => server.resetHandlers());
 
-// Mock the ENV - could also look into a .env file for this
+/**
+ * Provide a mock of our env module during testing.
+ * We could look into using a .env file for this as well.
+ */
 vi.mock("~/env.ts", () => ({
   env: {
     apiUrl: "http://www.example.com",
