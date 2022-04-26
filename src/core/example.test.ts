@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 interface Person {
   name: string;
 }
@@ -9,7 +11,7 @@ describe("example tests", () => {
 
     // verify snapshots are wired up
     expect(person).toMatchInlineSnapshot(`
-      Object {
+      {
         "name": "Geddy",
       }
     `);

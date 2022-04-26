@@ -1,4 +1,5 @@
-import { jsonGetApiError, jsonPostApiError } from "~/test-utils";
+import { describe, expect, it } from "vitest";
+import { apiUrl, jsonGetApiError, jsonPostApiError } from "~/test-utils";
 import { fetchExampleApiResponse, postExampleApiResponse } from "./api";
 
 describe("api", () => {
@@ -9,7 +10,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
-      jsonGetApiError("/hello-world", { status: 404 });
+      jsonGetApiError(apiUrl("hello-world"), { status: 404 });
       await expect(fetchExampleApiResponse()).rejects.toThrow(/404/);
     });
   });
@@ -21,7 +22,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
-      jsonPostApiError("/hello-world");
+      jsonPostApiError(apiUrl("hello-world"));
 
       await expect(postExampleApiResponse({ name: "testing" })).rejects.toThrow(
         /500/
