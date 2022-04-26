@@ -1,6 +1,6 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { GlobalErrorBoundary } from "~/components/global-error-boundary";
 import { Home } from "~/pages/home";
 
@@ -13,11 +13,9 @@ export function App(): JSX.Element {
         <QueryClientProvider client={queryClient}>
           <main>
             <Router>
-              <Switch>
-                <Route>
-                  <Home />
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path="*" element={<Home />} />
+              </Routes>
             </Router>
           </main>
         </QueryClientProvider>
