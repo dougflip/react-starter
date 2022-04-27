@@ -11,10 +11,17 @@ type HttpErrorStatus = 400 | 401 | 403 | 404 | 500 | 503;
 /**
  * A response to use when mocking errors coming from the server.
  */
-interface MockErrorResponse<T> {
+type MockErrorResponse<T> = {
   status: HttpErrorStatus;
   body: T;
-}
+};
+
+/**
+ * Additional options for configuring the mock error.
+ */
+type MockErrorOptions = {
+  apiUrl?: string;
+};
 
 function defaultErrorResponse(): MockErrorResponse<string> {
   return {
@@ -32,10 +39,11 @@ function defaultErrorResponse(): MockErrorResponse<string> {
 export function jsonApiError<T>(
   verb: "get" | "post",
   path: string,
-  { status, body }: MockErrorResponse<T>
+  { status, body }: MockErrorResponse<T>,
+  { apiUrl = env.apiUrl }: MockErrorOptions = {}
 ): void {
   server.use(
-    rest[verb](path, (req, res, ctx) => {
+    rest[verb](`${apiUrl}/${path}`, (_, res, ctx) => {
       return res(ctx.status(status), ctx.json(body));
     })
   );
@@ -69,11 +77,4 @@ export function jsonPostApiError<T>(
     ...defaultErrorResponse(),
     ...mockResponse,
   });
-}
-
-/**
- * Turns a path into a full URL based on the current API URL.
- */
-export function apiUrl(path: string): string {
-  return `${env.apiUrl}/${path}`;
 }
