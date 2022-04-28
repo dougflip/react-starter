@@ -86,3 +86,9 @@ using NVM.
 1. [Install nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 2. `nvm use`
 3. `npm install`
+
+## TODO:
+
+- Upgrade to React 18
+- Use [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
+- Clean up test coverage output to exclude unnecessary files like mocks
