@@ -15,11 +15,20 @@ function devDelay(ctx: RestContext, delay = 1000) {
   return ctx.delay(finalDelay);
 }
 
+type MockHandler = Parameters<typeof rest.get>[1];
+
+export const mocks = {
+  fetchExampleApiResponse: (handler: MockHandler) =>
+    rest.get(`${env.apiUrl}/hello-world`, handler),
+  postExampleApiResponse: (handler: MockHandler) =>
+    rest.post(`${env.apiUrl}/hello-world`, handler),
+};
+
 export const handlers = [
-  rest.get(`${env.apiUrl}/hello-world`, (req, res, ctx) => {
+  mocks.fetchExampleApiResponse((_req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
   }),
-  rest.post(`${env.apiUrl}/hello-world`, (req, res, ctx) => {
+  mocks.postExampleApiResponse((_req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
   }),
 ];

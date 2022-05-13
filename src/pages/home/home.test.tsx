@@ -1,5 +1,12 @@
 import { describe, it } from "vitest";
-import { jsonGetApiError, renderApp, screen, waitFor } from "~/test-utils";
+import {
+  mocks,
+  renderApp,
+  screen,
+  serverError,
+  useMockApi,
+  waitFor,
+} from "~/test-utils";
 
 describe("<Home />", () => {
   it("renders a loading screen while the query loads", async () => {
@@ -13,7 +20,7 @@ describe("<Home />", () => {
   });
 
   it("renders an error if the query fails", async () => {
-    jsonGetApiError("hello-world");
+    useMockApi([mocks.fetchExampleApiResponse(serverError())]);
     renderApp("/");
     await waitFor(() => expect(screen.getByText(/error/i)));
   });
