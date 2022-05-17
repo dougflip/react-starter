@@ -26,7 +26,6 @@ module.exports = {
     // const { unused: _, ...rest } = myObj;
     "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
   },
-  rules: {},
   settings: {
     react: {
       version: "detect",
