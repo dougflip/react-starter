@@ -13,7 +13,16 @@ import { render, RenderOptions } from "@testing-library/react";
 import React, { FC, ReactElement } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
+import { vi } from "vitest";
 import { AppRoutes } from "~/app";
+import { noop } from "~/core/functions";
+
+/**
+ * Creates a spy for `console.error` with a noop implementation.
+ */
+export function suppressConsoleErrors(): void {
+  vi.spyOn(console, "error").mockImplementation(noop);
+}
 
 /**
  * A query provider for react-query that is configured

@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { fetchExampleApiResponse, postExampleApiResponse } from "./api";
-import { mocks, serverError, serverNotFound, useMockApi } from "~/test-utils";
+import {
+  mocks,
+  serverError,
+  serverNotFound,
+  suppressConsoleErrors,
+  useMockApi,
+} from "~/test-utils";
 
 describe("api", () => {
   describe("fetchExampleApiResponse", () => {
@@ -10,6 +16,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
+      suppressConsoleErrors();
       useMockApi([mocks.fetchExampleApiResponse(serverNotFound())]);
       await expect(fetchExampleApiResponse()).rejects.toThrow(/404/);
     });
@@ -22,6 +29,7 @@ describe("api", () => {
     });
 
     it("throws an exception for an error response", async () => {
+      suppressConsoleErrors();
       useMockApi([mocks.postExampleApiResponse(serverError())]);
 
       await expect(postExampleApiResponse({ name: "testing" })).rejects.toThrow(

@@ -1,6 +1,8 @@
 import "@testing-library/jest-dom";
 import "cross-fetch/polyfill";
+
 import { afterAll, afterEach, beforeAll, vi } from "vitest";
+
 import { server } from "./src/mocks/node";
 
 /**
@@ -13,6 +15,11 @@ import { server } from "./src/mocks/node";
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
+
+/**
+ * Restore mocks between every test.
+ */
+afterEach(() => { vi.restoreAllMocks() });
 
 /**
  * Provide a mock of our env module during testing.
