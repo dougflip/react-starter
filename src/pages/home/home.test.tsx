@@ -4,6 +4,7 @@ import {
   renderApp,
   screen,
   serverError,
+  suppressConsoleErrors,
   useMockApi,
   waitFor,
 } from "~/test-utils";
@@ -20,6 +21,7 @@ describe("<Home />", () => {
   });
 
   it("renders an error if the query fails", async () => {
+    suppressConsoleErrors();
     useMockApi([mocks.fetchExampleApiResponse(serverError())]);
     renderApp("/");
     await waitFor(() => expect(screen.getByText(/error/i)));

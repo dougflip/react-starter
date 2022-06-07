@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, it } from "vitest";
-import { render, screen } from "~/test-utils";
+import { render, screen, suppressConsoleErrors } from "~/test-utils";
 import { RemoteData } from "./remote-data";
 
 function Loading(): JSX.Element {
@@ -18,7 +18,6 @@ function Data({
   name: string;
   isFetching?: boolean;
 }): JSX.Element {
-  console.log(isFetching);
   return (
     <div>
       hello {name} {isFetching ? "fetching" : ""}
@@ -43,6 +42,7 @@ describe("<RemoteData />", () => {
   });
 
   it("renders an error screen when there is an error", async () => {
+    suppressConsoleErrors();
     render(
       <RemoteData
         isLoading={false}
