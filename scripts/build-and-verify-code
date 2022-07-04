@@ -7,6 +7,10 @@
 
 set -e
 
+echo "Testing for CI"
+whoami
+ls -lah
+
 echo "Linting the code"
 npm run lint
 
