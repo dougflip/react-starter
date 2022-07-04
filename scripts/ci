@@ -13,7 +13,7 @@ docker build -t react-starter-ci .
 
 echo "Running ${CMD} in react-starter-ci container"
 docker run --rm \
-    -v /app/node_modules \
-    -v "$(pwd)":/app \
+    -v /home/node/node_modules \
+    -v "$(pwd)":/home/node \
     react-starter-ci \
     $CMD
