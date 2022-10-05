@@ -60,7 +60,7 @@ When you are done you can exit the container with `ctrl + d`.
 npm start
 ```
 
-Open [http://localhost:1234/](http://localhost:1234/)
+Open [http://localhost:5174/](http://localhost:5174/)
 
 ## Running the tests
 
