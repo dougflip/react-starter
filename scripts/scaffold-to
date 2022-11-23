@@ -1,0 +1,19 @@
+#!/bin/bash
+
+###
+# Scaffolds this project to a new directory
+###
+
+set -e
+
+: "${1:?❌ Required positional argument <DESTINATION> not set - exiting.}"
+
+mkdir -p "$1"
+rsync -av --progress . "$1" --exclude node_modules --exclude .git --exclude coverage --exclude dist
+
+echo ""
+echo "✅ All source files copied to $1"
+echo ""
+echo "Next steps:"
+echo ""
+echo "  cd $1 && git init && nvm use && npm i"
