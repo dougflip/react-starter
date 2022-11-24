@@ -28,8 +28,21 @@ These libraries are not included, but recommended as needed
 
 - [date-fns](https://github.com/date-fns/date-fns) - Modern JavaScript date utility library
 - [mantine](https://github.com/mantinedev/mantine/) - React components library with native dark theme support
-- [ts-belt](https://github.com/mobily/ts-belt) - Fast, modern, and practical utility library for FP in TypeScript.
+- [remeda](https://remedajs.com/) - The first "data-first" and "data-last" utility library designed especially for TypeScript.
 - [zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation with static type inference
+
+## Scaffolding a new project
+
+Use [./scripts/scaffold-to](./scripts/scaffold-to) to create a new project based on this starter.
+
+Example:
+
+```bash
+# run from the root of this repo
+./scripts/scaffold-to ~/my-new-project
+```
+
+This will create the `~/my-new-project` dir and populate it with appropriate files.
 
 ## Local Development
 
