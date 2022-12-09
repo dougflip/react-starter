@@ -12,7 +12,7 @@ import {
 describe("<Home />", () => {
   it("renders a loading screen while the query loads", async () => {
     renderApp("/");
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/loading\.\.\./i)).toBeInTheDocument();
   });
 
   it("renders the response when the query is succeeds", async () => {

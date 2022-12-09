@@ -34,7 +34,7 @@ export function App(): JSX.Element {
     <React.StrictMode>
       <GlobalErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <main>
+          <main className="app-wrapper">
             <AppRoutes />
           </main>
         </QueryClientProvider>

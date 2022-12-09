@@ -1,3 +1,28 @@
+html,
 body {
-  background-color: #efefef;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+.app-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+h1 {
+  font-size: 3rem;
+  color: rgb(34, 139, 230);
+  margin: 2rem 0 1rem 0;
+}
+
+code {
+  font-size: 1rem;
 }
