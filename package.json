@@ -13,8 +13,8 @@
     "lint": "run-p format:check lint:code",
     "serve": "vite --host --port 2112",
     "start": "run-p compile:watch serve",
-    "test": "vitest",
-    "test:ci": "CI=1 vitest run --coverage",
+    "test": "TZ=UTC vitest",
+    "test:ci": "CI=1 TZ=UTC vitest run --coverage",
     "upgrade-msw": "msw init ./"
   },
   "dependencies": {
