@@ -1,12 +1,16 @@
+import { apiFailure, fetchExampleApiResponse } from "~/api";
+
 import { DateDisplay } from "~/components/date-display";
 import { NumberDisplay } from "~/components/number-display";
 import React from "react";
 import { RemoteData } from "~/components/remote-data";
-import { fetchExampleApiResponse } from "~/api";
 import { useQuery } from "react-query";
 
 export function Home(): JSX.Element {
   const query = useQuery("exampleResponse", fetchExampleApiResponse);
+  const queryThatFails = useQuery("exampleResponseThatFails", apiFailure, {
+    retry: false,
+  });
 
   return (
     <>
@@ -17,14 +21,17 @@ export function Home(): JSX.Element {
           delays the response.
         </p>
 
-        <code>
-          <RemoteData
-            {...query}
-            renderLoading={() => <div>loading...</div>}
-            renderError={() => <div>Error!</div>}
-            render={(x) => <div>{x.message}</div>}
-          />
-        </code>
+        <RemoteData {...query} render={(x) => <code>{x.message}</code>} />
+
+        <p>
+          This call will intentionally fail to show an error message being
+          rendered.
+        </p>
+
+        <RemoteData
+          {...queryThatFails}
+          render={(x) => <code>{x.message}</code>}
+        />
       </section>
       <section>
         <h1>DateDisplay</h1>

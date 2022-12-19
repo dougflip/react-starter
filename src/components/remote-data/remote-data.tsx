@@ -1,3 +1,5 @@
+import { ErrorMessage } from "../error-message";
+import { Loader } from "../loader";
 import React from "react";
 
 export type RemoteDataRenderOptions = {
@@ -20,9 +22,10 @@ export type RemoteDataProps<Data, Err> = {
   isFetching: boolean;
   error: Err | undefined;
   data: Data | undefined;
-  renderLoading: () => JSX.Element;
-  renderError: (err: Err) => JSX.Element;
   render: (data: Data, options: RemoteDataRenderOptions) => JSX.Element;
+  renderLoading?: () => JSX.Element;
+  renderError?: (err: Err) => JSX.Element;
+  refetch: () => void;
 };
 
 /**
@@ -38,16 +41,28 @@ export function RemoteData<Data, Err>({
   isFetching,
   error,
   data,
-  renderLoading,
+  renderLoading = () => <Loader />,
   renderError,
   render,
+  refetch,
 }: RemoteDataProps<Data, Err>): JSX.Element {
   if (isLoading) {
     return renderLoading();
   }
 
   if (error) {
-    return renderError(error);
+    if (renderError) {
+      return renderError(error);
+    }
+
+    return (
+      <ErrorMessage title="Error fetching data">
+        Please try refreshing the page or{" "}
+        <button className="button-link" onClick={refetch}>
+          click here to retry the request.
+        </button>
+      </ErrorMessage>
+    );
   }
 
   if (data) {

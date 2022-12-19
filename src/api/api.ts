@@ -1,5 +1,6 @@
-import { env } from "~/env";
 import { getJson, postJson } from "./api-core";
+
+import { env } from "~/env";
 
 const { apiUrl } = env;
 
@@ -9,6 +10,10 @@ type ExampleResponse = {
 
 export function fetchExampleApiResponse(): Promise<ExampleResponse> {
   return getJson<ExampleResponse>(`${apiUrl}/hello-world`);
+}
+
+export function apiFailure(): Promise<ExampleResponse> {
+  return getJson<ExampleResponse>(`${apiUrl}/api-failure`);
 }
 
 type ExamplePostArgs = {

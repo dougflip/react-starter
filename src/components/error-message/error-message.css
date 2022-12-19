@@ -1,0 +1,22 @@
+.error-message {
+  display: flex;
+  padding: 1rem 0.75rem;
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+  border: 1px solid var(--color-danger);
+  border-radius: 0.5rem;
+}
+
+.error-message .error-message-sidebar {
+  margin-right: 0.75rem;
+}
+
+.error-message .error-message-title {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.error-message .error-message-body {
+  font-size: 1rem;
+  color: var(--color-dark);
+}
