@@ -7,7 +7,8 @@
  *
  * See: https://kentcdodds.com/blog/stop-mocking-fetch
  */
-import { rest, RestContext } from "msw";
+import { RestContext, rest } from "msw";
+
 import { env } from "~/env";
 
 function devDelay(ctx: RestContext, delay = 1000) {
@@ -20,6 +21,8 @@ type MockHandler = Parameters<typeof rest.get>[1];
 export const mocks = {
   fetchExampleApiResponse: (handler: MockHandler) =>
     rest.get(`${env.apiUrl}/hello-world`, handler),
+  fetchApiFailureResponse: (handler: MockHandler) =>
+    rest.get(`${env.apiUrl}/api-failure`, handler),
   postExampleApiResponse: (handler: MockHandler) =>
     rest.post(`${env.apiUrl}/hello-world`, handler),
 };
@@ -27,6 +30,9 @@ export const mocks = {
 export const handlers = [
   mocks.fetchExampleApiResponse((_req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
+  }),
+  mocks.fetchApiFailureResponse((_req, res, ctx) => {
+    return res(devDelay(ctx), ctx.status(500));
   }),
   mocks.postExampleApiResponse((_req, res, ctx) => {
     return res(devDelay(ctx), ctx.json({ message: "Hello World" }));

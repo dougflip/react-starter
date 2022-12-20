@@ -12,10 +12,11 @@ import {
 describe("<Home />", () => {
   it("renders a loading screen while the query loads", async () => {
     renderApp("/");
-    expect(screen.getByText(/loading\.\.\./i)).toBeInTheDocument();
+    expect(screen.getAllByText(/loading\.\.\./i)).toHaveLength(2);
   });
 
   it("renders the response when the query is succeeds", async () => {
+    suppressConsoleErrors();
     renderApp("/");
     await waitFor(() => expect(screen.getByText(/hello world$/i)));
   });

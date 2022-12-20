@@ -1,3 +1,14 @@
+/**
+ * Top level variables - these could be in their own file or set of files.
+ */
+html {
+  --color-primary: rgb(34, 139, 230);
+  --color-danger: rgb(250, 82, 82);
+  --color-danger-light: rgb(255, 245, 245);
+  --color-dark: rgba(0, 0, 0, 0.85);
+  --color-white: #fff;
+}
+
 html,
 body {
   margin: 0;
@@ -6,7 +17,7 @@ body {
 }
 
 body {
-  background-color: #fff;
+  background-color: var(--color-white);
 }
 
 .app-wrapper {
@@ -14,12 +25,12 @@ body {
   margin: 0 auto;
   padding: 1rem;
   font-size: 1.2rem;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--color-dark);
 }
 
 h1 {
   font-size: 3rem;
-  color: rgb(34, 139, 230);
+  color: var(--color-primary);
   margin: 2rem 0 1rem 0;
 }
 
@@ -29,4 +40,16 @@ p {
 
 code {
   font-size: 1rem;
+}
+
+.sr-only {
+  display: none;
+}
+
+.button-link {
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-size: inherit;
 }

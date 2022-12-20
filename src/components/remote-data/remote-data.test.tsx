@@ -1,6 +1,7 @@
-import React from "react";
-import { describe, it } from "vitest";
+import { describe, it, vi } from "vitest";
 import { render, screen, suppressConsoleErrors } from "~/test-utils";
+
+import React from "react";
 import { RemoteData } from "./remote-data";
 
 function Loading(): JSX.Element {
@@ -36,6 +37,7 @@ describe("<RemoteData />", () => {
         renderLoading={() => <Loading />}
         renderError={() => <Error />}
         render={(name: string) => <Data name={name} />}
+        refetch={vi.fn()}
       />
     );
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
@@ -52,6 +54,7 @@ describe("<RemoteData />", () => {
         renderLoading={() => <Loading />}
         renderError={() => <Error />}
         render={(name: string) => <Data name={name} />}
+        refetch={vi.fn()}
       />
     );
     expect(screen.getByText(/error/i)).toBeInTheDocument();
@@ -71,6 +74,7 @@ describe("<RemoteData />", () => {
             <Data name={name} {...options} />
           </div>
         )}
+        refetch={vi.fn()}
       />
     );
     expect(screen.getByText(/jane doe/i)).toBeInTheDocument();
