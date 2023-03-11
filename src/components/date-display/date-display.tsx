@@ -20,7 +20,7 @@ type DateDisplayProps = {
   /**
    * This is rendered when the `value` is able to be parsed to a Date instance.
    */
-  children?: (formattedString: string, isoString: string) => JSX.Element;
+  children?: (formattedString: string, parsed: Date) => JSX.Element;
   /**
    * This is rendered when the `value` is NOT able to be parsed to a Date instance.
    */
@@ -59,12 +59,11 @@ export function DateDisplay({
   }
 
   const formattedDate = formatDate(date);
-  const isoDate = date.toISOString();
 
   return children ? (
-    children(formattedDate, isoDate)
+    children(formattedDate, date)
   ) : (
-    <time className={className} dateTime={isoDate}>
+    <time className={className} dateTime={date.toISOString()}>
       {formattedDate}
     </time>
   );

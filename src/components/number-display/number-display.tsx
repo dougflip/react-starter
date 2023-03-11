@@ -20,7 +20,7 @@ type NumberDisplayProps = {
   /**
    * This is rendered when the `value` is able to be parsed to a Date instance.
    */
-  children?: (formattedString: string) => JSX.Element;
+  children?: (formattedString: string, parsed: number) => JSX.Element;
   /**
    * This is rendered when the `value` is NOT able to be parsed to a Date instance.
    */
@@ -50,5 +50,5 @@ export function NumberDisplay({
 }: NumberDisplayProps): JSX.Element | null {
   const x = parseNumber(value);
 
-  return x ? children(formatNumber(x)) : <>{fallback}</>;
+  return x ? children(formatNumber(x), x) : <>{fallback}</>;
 }

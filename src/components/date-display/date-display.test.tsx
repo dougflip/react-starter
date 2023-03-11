@@ -46,9 +46,9 @@ describe("<DateDisplay />", () => {
     it("renders custom children", () => {
       render(
         <DateDisplay value="2022-01-01">
-          {(x, iso) => (
+          {(x, date) => (
             <button>
-              {x} - {iso}
+              {x} - {date.toISOString()}
             </button>
           )}
         </DateDisplay>
