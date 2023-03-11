@@ -1,9 +1,10 @@
-import React from "react";
+import {
+  DateLike,
+  formatDate as formatDateDefault,
+  parseDateLike,
+} from "~/core/date";
 
-/**
- * Values that can represent a Date - can be passed to the Date constructor.
- */
-export type DateLike = Date | string | number;
+import React from "react";
 
 type DateDisplayProps = {
   value: DateLike | null | undefined;
@@ -29,47 +30,6 @@ type DateDisplayProps = {
    */
   className?: string;
 };
-
-// https://stackoverflow.com/a/1353711
-function isValidDate(d: unknown): d is Date {
-  return d instanceof Date && !isNaN(d.getTime());
-}
-
-/**
- * A default formatter leveraging the browser's locale.
- */
-export function formatDateDefault(
-  d: Date,
-  opts: Partial<Intl.DateTimeFormatOptions> = {}
-): string {
-  return d.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    ...opts,
-  });
-}
-
-/**
- * A default parser which accepts a range of inputs.
- * It is likely different apps will have different needs and this is swappable in `DateDisplay`.
- */
-export function parseDateLike(d: DateLike | null | undefined): Date | null {
-  if (isValidDate(d)) {
-    return d;
-  }
-
-  if (typeof d === "number") {
-    return new Date(d);
-  }
-
-  if (typeof d === "string") {
-    const result = new Date(d);
-    return isValidDate(result) ? result : null;
-  }
-
-  return null;
-}
 
 /**
  * By default, renders a `<time>` tag with formatted text and a machine readable `dateTime` attribute.
