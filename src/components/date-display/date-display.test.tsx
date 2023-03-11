@@ -1,8 +1,9 @@
-import { DateDisplay, formatDateDefault } from "./date-display";
 import { describe, it } from "vitest";
 import { render, screen } from "~/test-utils";
 
+import { DateDisplay } from "./date-display";
 import React from "react";
+import { formatDate } from "~/core/date";
 
 describe("<DateDisplay />", () => {
   describe("defaults", () => {
@@ -45,9 +46,9 @@ describe("<DateDisplay />", () => {
     it("renders custom children", () => {
       render(
         <DateDisplay value="2022-01-01">
-          {(x, iso) => (
+          {(x, date) => (
             <button>
-              {x} - {iso}
+              {x} - {date.toISOString()}
             </button>
           )}
         </DateDisplay>
@@ -67,7 +68,7 @@ describe("<DateDisplay />", () => {
         <DateDisplay
           className="test-date"
           value="2022-01-01"
-          formatDate={(d) => formatDateDefault(d, { year: "2-digit" })}
+          formatDate={(d) => formatDate(d, { year: "2-digit" })}
         />
       );
       expect(

@@ -1,8 +1,9 @@
-import { NumberDisplay, formatNumberDefault } from "./number-display";
 import { describe, it } from "vitest";
 import { render, screen } from "~/test-utils";
 
+import { NumberDisplay } from "./number-display";
 import React from "react";
+import { formatNumber } from "~/core/number";
 
 describe("<NumberDisplay />", () => {
   describe("defaults", () => {
@@ -52,9 +53,7 @@ describe("<NumberDisplay />", () => {
       render(
         <NumberDisplay
           value={2112}
-          formatNumber={(d) =>
-            formatNumberDefault(d, { maximumSignificantDigits: 1 })
-          }
+          formatNumber={(d) => formatNumber(d, { maximumSignificantDigits: 1 })}
         />
       );
       expect(screen.getByText("2,000")).toBeInTheDocument();
