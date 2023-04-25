@@ -25,6 +25,10 @@ module.exports = {
     // works with destructuring as well
     // const { unused: _, ...rest } = myObj;
     "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
+    "@typescript-eslint/naming-convention": ["error", {
+      selector: 'typeLike',
+      format: ['PascalCase'],
+    }],
   },
   settings: {
     react: {
