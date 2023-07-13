@@ -22,7 +22,7 @@ export function AppRoutes({
   return renderRoutes(
     <Routes>
       <Route path="*" element={<Home />} />
-    </Routes>
+    </Routes>,
   );
 }
 

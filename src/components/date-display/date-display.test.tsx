@@ -9,17 +9,17 @@ describe("<DateDisplay />", () => {
   describe("defaults", () => {
     it("renders a date instance", () => {
       render(
-        <DateDisplay className="test-date" value={new Date("2022-01-01")} />
+        <DateDisplay className="test-date" value={new Date("2022-01-01")} />,
       );
       expect(
-        document.querySelector(".test-date")?.textContent
+        document.querySelector(".test-date")?.textContent,
       ).toMatchInlineSnapshot('"01/01/2022"');
     });
 
     it("renders a string representing a date", () => {
       render(<DateDisplay className="test-date" value="2022-01-01" />);
       expect(
-        document.querySelector(".test-date")?.textContent
+        document.querySelector(".test-date")?.textContent,
       ).toMatchInlineSnapshot('"01/01/2022"');
     });
 
@@ -27,7 +27,7 @@ describe("<DateDisplay />", () => {
       const time = new Date("2022-01-01").getTime();
       render(<DateDisplay className="test-date" value={time} />);
       expect(
-        document.querySelector(".test-date")?.textContent
+        document.querySelector(".test-date")?.textContent,
       ).toMatchInlineSnapshot('"01/01/2022"');
     });
 
@@ -51,10 +51,10 @@ describe("<DateDisplay />", () => {
               {x} - {date.toISOString()}
             </button>
           )}
-        </DateDisplay>
+        </DateDisplay>,
       );
       expect(screen.getByRole("button").textContent).toMatchInlineSnapshot(
-        '"01/01/2022 - 2022-01-01T00:00:00.000Z"'
+        '"01/01/2022 - 2022-01-01T00:00:00.000Z"',
       );
     });
 
@@ -69,10 +69,10 @@ describe("<DateDisplay />", () => {
           className="test-date"
           value="2022-01-01"
           formatDate={(d) => formatDate(d, { year: "2-digit" })}
-        />
+        />,
       );
       expect(
-        document.querySelector(".test-date")?.textContent
+        document.querySelector(".test-date")?.textContent,
       ).toMatchInlineSnapshot('"01/01/22"');
     });
 
@@ -82,10 +82,10 @@ describe("<DateDisplay />", () => {
           className="test-date"
           value={null}
           parseDate={() => new Date("2022-01-01")}
-        />
+        />,
       );
       expect(
-        document.querySelector(".test-date")?.textContent
+        document.querySelector(".test-date")?.textContent,
       ).toMatchInlineSnapshot('"01/01/2022"');
     });
   });

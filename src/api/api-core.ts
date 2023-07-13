@@ -40,7 +40,7 @@ async function fetchJson<T>(url: string, init: RequestInit = {}): Promise<T> {
  */
 export async function getJson<T>(
   url: string,
-  init: RequestInit = {}
+  init: RequestInit = {},
 ): Promise<T> {
   return fetchJson(url, {
     ...init,
@@ -54,7 +54,7 @@ export async function getJson<T>(
 export async function postJson<T>(
   url: string,
   body: unknown,
-  init: RequestInit = {}
+  init: RequestInit = {},
 ): Promise<T> {
   return fetchJson(url, {
     ...init,

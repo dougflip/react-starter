@@ -26,7 +26,7 @@ export function jsonSuccess(body: Record<string, unknown> = {}): MockHandlerFn {
  * Useful when a unit test wants to set a specific API call to return an error.
  */
 export function serverNotFound(
-  body: Record<string, unknown> = {}
+  body: Record<string, unknown> = {},
 ): MockHandlerFn {
   return (_req, res, ctx) => res(ctx.status(404), ctx.json(body));
 }

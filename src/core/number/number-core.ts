@@ -16,7 +16,7 @@ export function isValidNumber(x: unknown): x is number {
  * Attempts to parse a `NumberLike` to a number and returns `null` if it fails.
  */
 export function parseNumberLike(
-  x: NumberLike | null | undefined
+  x: NumberLike | null | undefined,
 ): number | null {
   if (!x) {
     return null;
@@ -37,7 +37,7 @@ export function parseNumberLike(
  */
 export function formatNumber(
   d: number,
-  opts: Partial<Intl.NumberFormatOptions> = {}
+  opts: Partial<Intl.NumberFormatOptions> = {},
 ): string {
   return d.toLocaleString(undefined, {
     maximumFractionDigits: 2,
