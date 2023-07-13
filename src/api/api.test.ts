@@ -33,7 +33,7 @@ describe("api", () => {
       useMockApi([mocks.postExampleApiResponse(serverError())]);
 
       await expect(postExampleApiResponse({ name: "testing" })).rejects.toThrow(
-        /500/
+        /500/,
       );
     });
   });

@@ -38,7 +38,7 @@ export function parseDateLike(d: DateLike | null | undefined): Date | null {
  */
 export function formatDate(
   d: Date,
-  opts: Partial<Intl.DateTimeFormatOptions> = {}
+  opts: Partial<Intl.DateTimeFormatOptions> = {},
 ): string {
   return d.toLocaleDateString(undefined, {
     year: "numeric",

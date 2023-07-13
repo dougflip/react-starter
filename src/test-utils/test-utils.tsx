@@ -52,7 +52,7 @@ const AllTheProviders: FC = ({ children }) => {
  */
 const customRender = (
   ui: ReactElement,
-  options?: Omit<RenderOptions, "wrapper">
+  options?: Omit<RenderOptions, "wrapper">,
 ) => render(ui, { wrapper: AllTheProviders, ...options });
 
 /**
@@ -61,7 +61,7 @@ const customRender = (
  */
 const renderApp = (
   initialPath: string,
-  options?: Omit<RenderOptions, "wrapper">
+  options?: Omit<RenderOptions, "wrapper">,
 ) =>
   render(
     <AppRoutes
@@ -72,7 +72,7 @@ const renderApp = (
     {
       wrapper: AllTheProviders,
       ...options,
-    }
+    },
   );
 
 export * from "@testing-library/react";

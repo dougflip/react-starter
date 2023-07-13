@@ -21,7 +21,7 @@ type ExamplePostArgs = {
 };
 
 export function postExampleApiResponse(
-  data: ExamplePostArgs
+  data: ExamplePostArgs,
 ): Promise<ExampleResponse> {
   return postJson<ExampleResponse>(`${apiUrl}/hello-world`, data);
 }

@@ -21,7 +21,7 @@ describe("<NumberDisplay />", () => {
       render(
         <button>
           <NumberDisplay value={null} />
-        </button>
+        </button>,
       );
       expect(screen.getByRole("button")).toBeEmptyDOMElement();
     });
@@ -30,7 +30,7 @@ describe("<NumberDisplay />", () => {
       render(
         <button>
           <NumberDisplay value={undefined} />
-        </button>
+        </button>,
       );
       expect(screen.getByRole("button")).toBeEmptyDOMElement();
     });
@@ -39,7 +39,7 @@ describe("<NumberDisplay />", () => {
   describe("customization", () => {
     it("renders custom children", () => {
       render(
-        <NumberDisplay value={2112}>{(x) => <>Count: {x}</>}</NumberDisplay>
+        <NumberDisplay value={2112}>{(x) => <>Count: {x}</>}</NumberDisplay>,
       );
       expect(screen.getByText(/count: 2,112/i)).toBeInTheDocument();
     });
@@ -54,7 +54,7 @@ describe("<NumberDisplay />", () => {
         <NumberDisplay
           value={2112}
           formatNumber={(d) => formatNumber(d, { maximumSignificantDigits: 1 })}
-        />
+        />,
       );
       expect(screen.getByText("2,000")).toBeInTheDocument();
     });

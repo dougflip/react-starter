@@ -38,7 +38,7 @@ describe("<RemoteData />", () => {
         renderError={() => <Error />}
         render={(name: string) => <Data name={name} />}
         refetch={vi.fn()}
-      />
+      />,
     );
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
@@ -55,7 +55,7 @@ describe("<RemoteData />", () => {
         renderError={() => <Error />}
         render={(name: string) => <Data name={name} />}
         refetch={vi.fn()}
-      />
+      />,
     );
     expect(screen.getByText(/error/i)).toBeInTheDocument();
   });
@@ -75,7 +75,7 @@ describe("<RemoteData />", () => {
           </div>
         )}
         refetch={vi.fn()}
-      />
+      />,
     );
     expect(screen.getByText(/jane doe/i)).toBeInTheDocument();
     expect(screen.getByText(/fetching/i)).toBeInTheDocument();
