@@ -1,7 +1,8 @@
-import { server } from "./node";
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
 
-type MockHandlerFn = Parameters<typeof rest.get>[1];
+import { server } from "./node";
+
+type MockHandlerFn = Parameters<typeof http.get>[1];
 type MockHandler = Parameters<typeof server.use>[0];
 
 /**
@@ -18,23 +19,21 @@ export function useMockApi(handlers: MockHandler[]): void {
  * Useful for unit testing - especially for default handlers.
  */
 export function jsonSuccess(body: Record<string, unknown> = {}): MockHandlerFn {
-  return (_req, res, ctx) => res(ctx.json(body));
+  return () => HttpResponse.json(body);
 }
 
 /**
  * Returns a handler function which responds with a 404 error JSON response.
  * Useful when a unit test wants to set a specific API call to return an error.
  */
-export function serverNotFound(
-  body: Record<string, unknown> = {},
-): MockHandlerFn {
-  return (_req, res, ctx) => res(ctx.status(404), ctx.json(body));
+export function serverNotFound(): MockHandlerFn {
+  return () => HttpResponse.json({ error: "Not Found" }, { status: 404 });
 }
 
 /**
  * Returns a handler function which responds with a 500 error JSON response.
  * Useful when a unit test wants to set a specific API call to return an error.
  */
-export function serverError(body: Record<string, unknown> = {}): MockHandlerFn {
-  return (_req, res, ctx) => res(ctx.status(500), ctx.json(body));
+export function serverError(): MockHandlerFn {
+  return () => HttpResponse.json({ error: "Server Error" }, { status: 500 });
 }

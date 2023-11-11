@@ -7,34 +7,36 @@
  *
  * See: https://kentcdodds.com/blog/stop-mocking-fetch
  */
-import { RestContext, rest } from "msw";
+import { HttpResponse, delay, http } from "msw";
 
 import { env } from "~/env";
 
-function devDelay(ctx: RestContext, delay = 1000) {
-  const finalDelay = env.nodeEnv === "development" ? delay : 0;
-  return ctx.delay(finalDelay);
+function devDelay(delay = 1000): number {
+  return env.nodeEnv === "development" ? delay : 0;
 }
 
-type MockHandler = Parameters<typeof rest.get>[1];
+type MockHandler = Parameters<typeof http.get>[1];
 
 export const mocks = {
   fetchExampleApiResponse: (handler: MockHandler) =>
-    rest.get(`${env.apiUrl}/hello-world`, handler),
+    http.get(`${env.apiUrl}/hello-world`, handler),
   fetchApiFailureResponse: (handler: MockHandler) =>
-    rest.get(`${env.apiUrl}/api-failure`, handler),
+    http.get(`${env.apiUrl}/api-failure`, handler),
   postExampleApiResponse: (handler: MockHandler) =>
-    rest.post(`${env.apiUrl}/hello-world`, handler),
+    http.post(`${env.apiUrl}/hello-world`, handler),
 };
 
 export const handlers = [
-  mocks.fetchExampleApiResponse((_req, res, ctx) => {
-    return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
+  mocks.fetchExampleApiResponse(async () => {
+    await delay(devDelay());
+    return HttpResponse.json({ message: "Hello World" });
   }),
-  mocks.fetchApiFailureResponse((_req, res, ctx) => {
-    return res(devDelay(ctx), ctx.status(500));
+  mocks.fetchApiFailureResponse(async () => {
+    await delay(devDelay());
+    return HttpResponse.json({ error: "Server Error" }, { status: 500 });
   }),
-  mocks.postExampleApiResponse((_req, res, ctx) => {
-    return res(devDelay(ctx), ctx.json({ message: "Hello World" }));
+  mocks.postExampleApiResponse(async () => {
+    await delay(devDelay());
+    return HttpResponse.json({ message: "Hello World" });
   }),
 ];

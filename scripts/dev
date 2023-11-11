@@ -10,6 +10,6 @@ echo "Running ${cmd} in the development container"
 docker run --rm -it \
     -v /app/node_modules \
     -v "$(pwd)":/app \
-    -p 3000:3000 \
+    -p 2112:2112 \
     react-starter-local-dev \
     $cmd
