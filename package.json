@@ -18,17 +18,17 @@
     "upgrade-msw": "msw init ./"
   },
   "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.18.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^12.1.5",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
     "@testing-library/user-event": "^14.5.1",
-    "@types/react": "^17.0.70",
-    "@types/react-dom": "^17.0.23",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",

@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactPortal } from "react";
+import React, { ReactPortal } from "react";
 
 /**
  * Use in place of ReactFragment for a safer type that does NOT
@@ -21,7 +21,6 @@ export type StrictReactFragment =
  * see: https://changelog.com/posts/the-react-reactnode-type-is-a-black-hole
  */
 export type StrictReactNode =
-  | ReactChild
   | StrictReactFragment
   | ReactPortal
   | boolean

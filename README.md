@@ -102,6 +102,6 @@ using NVM.
 
 ## TODO:
 
-- Upgrade to React 18
+- Generate a new Vite react-ts app and configure this app in the same way
 - Use [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 - Clean up test coverage output to exclude unnecessary files like mocks
