@@ -1,4 +1,4 @@
-import { describe, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, screen, suppressConsoleErrors } from "~/test-utils";
 
 import React from "react";

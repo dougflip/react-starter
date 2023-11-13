@@ -1,11 +1,10 @@
 import "./error-message.css";
 
-import React from "react";
-import { StrictReactNode } from "~/core/react-types";
+import React, { ReactNode } from "react";
 
 type ErrorMessageProps = {
   title: string;
-  children: StrictReactNode;
+  children: ReactNode;
 };
 
 /**

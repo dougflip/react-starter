@@ -1,6 +1,4 @@
-import React from "react";
-
-type GlobalErrorBoundaryProps = unknown;
+import React, { ReactNode } from "react";
 
 type GlobalErrorBoundaryState = {
   hasError: boolean;
@@ -10,10 +8,9 @@ type GlobalErrorBoundaryState = {
  * Handle any uncaught errors that bubble up to the top of the tree.
  * https://reactjs.org/docs/error-boundaries.html
  */
-export class GlobalErrorBoundary extends React.Component<
-  GlobalErrorBoundaryProps,
-  GlobalErrorBoundaryState
-> {
+export class GlobalErrorBoundary<
+  T extends { children: ReactNode },
+> extends React.Component<T, GlobalErrorBoundaryState> {
   state: GlobalErrorBoundaryState = {
     hasError: false,
   };

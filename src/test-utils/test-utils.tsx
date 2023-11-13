@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import React, { ReactElement, ReactNode } from "react";
 /**
  * Wraps testing library and adds a custom render function
  * which will apply all of our providers or other "wrapper" setup.
@@ -9,13 +11,12 @@
  * - Move the provider setup into a shared space which can then
  *      be reused by the <App /> component as well.
  */
-import { render, RenderOptions } from "@testing-library/react";
-import React, { FC, ReactElement } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { MemoryRouter } from "react-router-dom";
-import { vi } from "vitest";
+import { RenderOptions, render } from "@testing-library/react";
+
 import { AppRoutes } from "~/app";
+import { MemoryRouter } from "react-router-dom";
 import { noop } from "~/core/functions";
+import { vi } from "vitest";
 
 /**
  * Creates a spy for `console.error` with a noop implementation.
@@ -40,7 +41,7 @@ const queryClient = new QueryClient({
 /**
  * Applies all providers necessary for components running in a test env.
  */
-const AllTheProviders: FC = ({ children }) => {
+const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
