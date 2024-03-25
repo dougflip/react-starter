@@ -52,6 +52,8 @@
     "vitest": "^1.2.2"
   },
   "msw": {
-    "workerDirectory": ""
+    "workerDirectory": [
+      ""
+    ]
   }
 }
